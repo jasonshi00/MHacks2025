@@ -1,59 +1,39 @@
-export enum HttpMethod {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  DELETE = 'DELETE',
-  PATCH = 'PATCH',
+
+export interface UserDb {
+  dbName: string;
+  username: string;
+  password: string;
+  host: string;
+  port: string;
 }
 
-export enum View {
-  HOME = 'HOME',
-  ENDPOINTS = 'ENDPOINTS',
-  TREE = 'TREE',
-  TEST = 'TEST',
+export interface DbSchema {
+  tableName: string;
+  attributes: Record<string, string>; 
 }
 
-export interface Parameter {
-  id: string;
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+
+export interface RouteParameter {
   name: string;
-  constraints: string;
+  type: 'string' | 'number' | 'boolean';
   optional: boolean;
 }
 
-export interface Endpoint {
-  id:string;
+export interface Component {
+  componentId: number;
+  route: string;
   method: HttpMethod;
-  path: string;
+  serviceId: number;
+  children: number[];
+  attributes?: Record<string, any>;
   description?: string;
-  queryParams: Parameter[];
-  bodyParams: Parameter[];
-  serviceId?: string;
 }
 
 export interface Service {
-  id: string;
+  serviceId: number;
   name: string;
-  schema: string;
-  aiDescription?: string;
-}
-
-export interface DbCredentials {
-  host: string;
-  port: string;
-  user: string;
-  pass: string;
-  db: string;
-}
-
-export interface Project {
-  name: string;
-  dbCredentials: DbCredentials;
-  services: Service[];
-  endpoints: Endpoint[];
-}
-
-export interface TreeNode {
-  name: string;
-  endpoints: Endpoint[];
-  children: { [key: string]: TreeNode };
+  parentComponentId: number;
+  schemaTableName?: string;
+  isAiAgent: boolean;
 }
