@@ -23,15 +23,16 @@ def component():
         return jsonify({'data': data})
     
     elif(request.method == "POST"):
-        route = request.form['route']
-        method = request.form['method']
-        service = request.form['service']
+        route = request.form.get('route')
+        method = request.form.get('method')
+        service = request.form.get('service')
+        description = request.form.get('description')
         sql_query = '''INSERT INTO component \
-        (route, method, service) VALUES (%s, %s, %s)'''
+        (route, method, service, description) VALUES (%s, %s, %s, %s)'''
 
-        cur.execute(sql_query, (route, method, service))
+        cur.execute(sql_query, (route, method, service, description))
         conn.commit()
-        return jsonify({}), 200
+        return jsonify({"message": "200"}), 200
 
 @app.route("/component/<int:id>")
 def component_id(id):

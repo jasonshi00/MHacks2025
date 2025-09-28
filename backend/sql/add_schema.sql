@@ -3,6 +3,7 @@ CREATE TABLE component (
     route VARCHAR(255) NOT NULL,
     method VARCHAR(255) NOT NULL,
     service VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
     children INT[],
     PRIMARY KEY (component_id)
 );
