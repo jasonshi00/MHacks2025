@@ -1,0 +1,5 @@
+{
+  "name": "Workflow API Builder",
+  "description": "A web application to visually design, manage, and build API endpoints and services. Create projects, define endpoints with various HTTP methods, configure parameters, and visualize the entire API structure in a hierarchical tree.",
+  "requestFramePermissions": []
+}
