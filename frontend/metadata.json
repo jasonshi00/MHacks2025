@@ -1,0 +1,5 @@
+{
+  "name": "API Endpoint Workflow Generator",
+  "description": "An application to visually create and manage API endpoint workflows. Configure your database, generate services with AI, and visualize the endpoint structure in a hierarchical tree.",
+  "requestFramePermissions": []
+}
